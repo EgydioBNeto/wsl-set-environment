@@ -34,7 +34,6 @@ echo "alias ports='netstat -tulpn'" >> "$ZSHRC_PATH"
 echo "alias lsa='exa --long --all --header --no-icons'" >> "$ZSHRC_PATH"
 echo "alias ls='exa --long --header --no-icons'" >> "$ZSHRC_PATH"
 echo "alias chat='shell-genie ask'" >> "$ZSHRC_PATH"
-echo "eval '$(ssh-agent -s)'" >> "$ZSHRC_PATH"
 echo "alias help='tldr'" >> "$ZSHRC_PATH"
 echo "ave() {
  local profile='$1'

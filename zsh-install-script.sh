@@ -24,12 +24,9 @@ sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 prerequisites=("curl" "git" "zsh")
 
 for package in "${prerequisites[@]}"; do
-  if ! command_exists "$package" && ! package_installed "$package"; then
-    sudo apt-get install "$package" -y 
-  elif ! command_exists "$package" && package_installed "$package"; then
-    echo "$package is already installed."
-  fi
+    sudo apt-get install "$package" -y
 done
+
 
 # Install Oh My Zsh
 OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"

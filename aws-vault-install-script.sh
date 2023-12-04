@@ -27,14 +27,10 @@ sudo apt-get update -y || handle_error "Failed to update packages."
 sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 # Install prerequisites
-prerequisites=("unzip", "curl", "build-essential", "wget")
+prerequisites=("unzip" "curl" "build-essential" "wget")
 
 for package in "${prerequisites[@]}"; do
-  if ! command_exists "$package" && ! package_installed "$package"; then
-    sudo apt-get install "$package" -y 
-  elif ! command_exists "$package" && package_installed "$package"; then
-    echo "$package is already installed."
-  fi
+    sudo apt-get install "$package" -y
 done
 
 ##Install script

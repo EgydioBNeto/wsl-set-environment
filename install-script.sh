@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Function to check if a command is available
-command_exists() {
-  command -v "$1" >/dev/null 2>&1
-}
-
-# Function to check if a package is installed
-package_installed() {
-  dpkg -s "$1" >/dev/null 2>&1
-}
-
 # Function to handle errors
 handle_error() {
   echo "Error: $1"
@@ -25,14 +15,11 @@ sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 
 # Install Programs
- prerequisites=("git", "gcc-11", "code", "wget", "ca-certificates", "gpg", "apt-transport-https")
- for package in "${prerequisites[@]}"; do
-   if ! command_exists "$package" && ! package_installed "$package"; then
-     sudo apt-get install "$package" -y
-   elif ! command_exists "$package" && package_installed "$package"; then
-     echo "$package is already installed."
-   fi
- done
+prerequisites=("git" "gcc-11" "code" "wget" "ca-certificates" "gpg" "apt-transport-https")
+for package in "${prerequisites[@]}"; do
+    sudo apt-get install "$package" -y
+done
+
 
 brew install docker
 brew install docker-compose
