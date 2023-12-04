@@ -25,7 +25,7 @@ prerequisites=("curl" "git" "zsh")
 
 for package in "${prerequisites[@]}"; do
   if ! command_exists "$package" && ! package_installed "$package"; then
-    sudo apt-get install -y "$package" || handle_error "Failed to install $package."
+    sudo apt-get install "$package" -y 
   elif ! command_exists "$package" && package_installed "$package"; then
     echo "$package is already installed."
   fi
