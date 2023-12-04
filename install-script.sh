@@ -24,6 +24,19 @@ sudo apt-get update -y || handle_error "Failed to update packages."
 sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 
+# Install Programs
+ prerequisites=("git", "gcc-11", "code", "wget", "ca-certificates", "gpg", "apt-transport-https")
+ for package in "${prerequisites[@]}"; do
+   if ! command_exists "$package" && ! package_installed "$package"; then
+     sudo apt-get install "$package" -y
+   elif ! command_exists "$package" && package_installed "$package"; then
+     echo "$package is already installed."
+   fi
+ done
+
+# Just Update
+sudo apt-get update -y || handle_error "Failed to update packages."
+
 # vscode prerequisites
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
@@ -33,16 +46,8 @@ rm -f packages.microsoft.gpg
 # Just Update
 sudo apt-get update -y || handle_error "Failed to update packages."
 
-# Install Programs
- prerequisites=("git", "gcc-11", "code", "wget", "ca-certificates", "gpg", "apt-transport-https", "code")
- for package in "${prerequisites[@]}"; do
-   if ! command_exists "$package" && ! package_installed "$package"; then
-     sudo apt-get install "$package" -y
-   elif ! command_exists "$package" && package_installed "$package"; then
-     echo "$package is already installed."
-   fi
- done
-
+# Install vscode
+sudo apt install code -y
 
 brew install docker
 brew install docker-compose
