@@ -35,6 +35,8 @@ brew install bat
 brew install dog
 brew install openvpn
 brew install exa
+brew install oath-toolkit
+brew install oathtool
 brew install pipx
 brew update --auto-update
 pipx install shell-genie
