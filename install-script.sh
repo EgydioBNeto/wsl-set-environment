@@ -15,9 +15,9 @@ sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 
 # Install Programs
-prerequisites=("git" "gcc-11" "code" "wget" "ca-certificates" "gpg" "apt-transport-https")
+prerequisites=("git" "gcc-11" "code" "wget" "ca-certificates" "gpg" "apt-transport-https", "fd-find")
 for package in "${prerequisites[@]}"; do
-    sudo apt-get install "$package" -y
+    sudo apt install "$package" -y
 done
 
 
@@ -28,6 +28,7 @@ brew install kubectx
 brew install terraform
 brew install asdf
 brew install tldr
+brew install micro
 brew install pre-commit
 brew install terraform-docs
 brew install k9s
