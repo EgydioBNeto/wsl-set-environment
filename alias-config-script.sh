@@ -35,6 +35,8 @@ echo "alias lsa='exa --long --all --header --no-icons'" >> "$ZSHRC_PATH"
 echo "alias ls='exa --long --header --no-icons'" >> "$ZSHRC_PATH"
 echo "alias chat='shell-genie ask'" >> "$ZSHRC_PATH"
 echo "alias help='tldr'" >> "$ZSHRC_PATH"
+echo "alias micro='nano'" >> "$ZSHRC_PATH"
+echo "alias find='fdfind'" >> "$ZSHRC_PATH"
 echo "ave() {
  local profile='$1'
  aws-vault exec '$profile' --no-session
