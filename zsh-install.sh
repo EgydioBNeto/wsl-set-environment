@@ -22,9 +22,7 @@ for package in "${prerequisites[@]}"; do
       sudo apt-get install "$package"
     else
       echo "$package ja está instalado."
-done
-
-
+      
 # Install Oh My Zsh
 OH_MY_ZSH_DIR="~/.oh-my-zsh"
 if [ ! -d "$OH_MY_ZSH_DIR" ]; then
