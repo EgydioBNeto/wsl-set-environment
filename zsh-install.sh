@@ -12,14 +12,14 @@ handle_error() {
 }
 
 # Update and upgrade
-sudo apt-get update -y || handle_error "Failed to update packages."
-sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
+sudo apt-get update || handle_error "Failed to update packages."
+sudo apt-get upgrade || handle_error "Failed to upgrade packages."
 
 # Install prerequisites
 prerequisites=("curl" "git" "zsh")
 for package in "${prerequisites[@]}"; do
     if ! command_exists "$package"; then
-      sudo apt-get install "$package" -y
+      sudo apt-get install "$package"
     else
       echo "$package ja está instalado."
 done
@@ -28,7 +28,7 @@ done
 # Install Oh My Zsh
 OH_MY_ZSH_DIR="~/.oh-my-zsh"
 if [ ! -d "$OH_MY_ZSH_DIR" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y || handle_error "Failed to install Oh My Zsh."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || handle_error "Failed to install Oh My Zsh."
 else
   echo "Oh My Zsh is already installed."
 fi
