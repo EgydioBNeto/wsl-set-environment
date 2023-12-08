@@ -29,4 +29,3 @@ if [ ! -d "$OH_MY_ZSH_DIR" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || handle_error "Failed to install Oh My Zsh."
 else
   echo "Oh My Zsh is already installed."
-fi
