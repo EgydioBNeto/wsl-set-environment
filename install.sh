@@ -70,13 +70,14 @@ zinit self-update
 echo "Zinit setup completed."
 
 # Install Programs apt-get
-prerequisites="gcc-11 wget ca-certificates gpg apt-transport-https fd-find python3-pip unzip build-essential"
+prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential")
+
 for package in "${prerequisites[@]}"; do
-    if ! command_exists "$package"; then
-      sudo apt-get install "$package"
-    else
-      echo "$package já está instalado."
-    fi
+  if ! command_exists "$package"; then
+    sudo apt-get install -y "$package"
+  else
+    echo "$package já está instalado."
+  fi
 done
 
 # Install aws-cli
@@ -88,6 +89,7 @@ if ! command_exists "aws"; then
   echo "AWS CLI instalado com sucesso. Versão:"
   rm -rf awscliv2.zip
   /usr/local/bin/aws --version
+  source "$ZSHRC_PATH"
 else
   echo "AWS CLI já está instalado. Versão:"
   aws --version
@@ -106,15 +108,15 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew="docker docker-compose kubernetes-cli kubectx terraform asdf tldr micro pre-commit terraform-docs k9s bat dog openvpn exa pipx"
-for package in "${prerequisitesBrew[@]}"; do
-    if ! command_exists "$package"; then
-      brew install "$package"
-    else
-      echo "$package já está instalado."
-    fi
-done
+prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx")
 
+for package in "${prerequisitesBrew[@]}"; do
+  if ! command_exists "$package"; then
+    brew install "$package"
+  else
+    echo "$package já está instalado."
+  fi
+done
 # Install aws-vault
 if ! command_exists "aws-vault"; then
   echo "AWS Vault não está instalado. Instalando..."
