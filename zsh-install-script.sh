@@ -21,7 +21,7 @@ sudo apt-get update -y || handle_error "Failed to update packages."
 sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 # Install prerequisites
-prerequisites=("curl" "git" "zsh")
+prerequisites=("curl" "git" "zsh", "python3-pip")
 for package in "${prerequisites[@]}"; do
     sudo apt-get install "$package" -y
 done
