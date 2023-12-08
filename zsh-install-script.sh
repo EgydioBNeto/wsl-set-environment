@@ -27,7 +27,7 @@ for package in "${prerequisites[@]}"; do
 done
 
 # Set zsh theme
-sed -i 's/ZSH_THEME=.*/ZSH_THEME="jonathan"/' "$ZSHRC_PATH"
+sed -i 's/ZSH_THEME=.*/ZSH_THEME="jonathan"/' '~/.zshrc'
 
 # Install Zinit
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
