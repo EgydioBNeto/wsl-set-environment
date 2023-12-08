@@ -21,7 +21,7 @@ sudo apt-get update -y || handle_error "Failed to update packages."
 sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 # Install prerequisites
-prerequisites=("curl" "git" "zsh", "python3-pip")
+prerequisites=("curl" "git" "zsh")
 for package in "${prerequisites[@]}"; do
     sudo apt-get install "$package" -y
 done
@@ -52,4 +52,3 @@ else
 fi
 
 echo "ZSH setup completed."
-source ~/.zshrc
