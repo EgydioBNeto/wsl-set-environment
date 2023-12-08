@@ -22,33 +22,34 @@ sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
 
 # Install prerequisites
 prerequisites=("curl" "git" "zsh")
-
 for package in "${prerequisites[@]}"; do
     sudo apt-get install "$package" -y
 done
 
+# Set zsh theme
+sed -i 's/ZSH_THEME=.*/ZSH_THEME="jonathan"/' "$ZSHRC_PATH"
+
+# Install Zinit
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
+
+# Configure zinit
+echo "
+# Zinit start
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+# Zinit end
+" >> ~/.zshrc
+
+echo "Zinit setup completed."
 
 # Install Oh My Zsh
-OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
+OH_MY_ZSH_DIR="~/.oh-my-zsh"
 if [ ! -d "$OH_MY_ZSH_DIR" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y || handle_error "Failed to install Oh My Zsh."
 else
   echo "Oh My Zsh is already installed."
 fi
 
-
-# Install Zinit
-bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
-
-# Configure ZSH
-ZSHRC_PATH=~/.zshrc
-
-echo "zinit light zdharma-continuum/fast-syntax-highlighting" >> "$ZSHRC_PATH"
-echo "zinit light zsh-users/zsh-autosuggestions" >> "$ZSHRC_PATH"
-echo "zinit light zsh-users/zsh-completions" >> "$ZSHRC_PATH"
-
-# Set theme
-sed -i 's/ZSH_THEME=.*/ZSH_THEME="jonathan"/' "$ZSHRC_PATH"
-
-# End of script
-echo "ZSH setup completed. Please restart your terminal."
+echo "ZSH setup completed."
+source ~/.zshrc
