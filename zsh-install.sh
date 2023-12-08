@@ -16,12 +16,12 @@ sudo apt-get update || handle_error "Failed to update packages."
 sudo apt-get upgrade || handle_error "Failed to upgrade packages."
 
 # Install prerequisites
-prerequisites=("curl" "git" "zsh")
-for package in "${prerequisites[@]}"; do
+prerequisites="curl git zsh"
+for package in $prerequisites; do
     if ! command_exists "$package"; then
-      sudo apt-get install "$package"
+        sudo apt-get install "$package"
     else
-      echo "$package já está instalado."
+        echo "$package is already installed."
     fi
 done
 
