@@ -21,9 +21,9 @@ for package in "${prerequisites[@]}"; do
     if ! command_exists "$package"; then
       sudo apt-get install "$package"
     else
-      echo "$package ja está instalado."
+      echo "$package já está instalado."
+    fi
 done
-
 
 # Install Oh My Zsh
 OH_MY_ZSH_DIR="~/.oh-my-zsh"
