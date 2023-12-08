@@ -15,8 +15,8 @@ handle_error() {
 ZSHRC_PATH="~/.zshrc"
 
 # Update and upgrade
-sudo apt-get update -y || handle_error "Failed to update packages."
-sudo apt-get upgrade -y || handle_error "Failed to upgrade packages."
+sudo apt-get update || handle_error "Failed to update packages."
+sudo apt-get upgrade || handle_error "Failed to upgrade packages."
 
 # Set zsh theme
 sed -i 's/ZSH_THEME=.*/ZSH_THEME="jonathan"/' "$ZSHRC_PATH"
@@ -75,7 +75,7 @@ echo "Zinit setup completed."
 prerequisites=("gcc-11" "code" "wget" "ca-certificates" "gpg" "apt-transport-https", "fd-find", "python3-pip", "unzip", "build-essential")
 for package in "${prerequisites[@]}"; do
     if ! command_exists "$package"; then
-      sudo apt-get install "$package" -y
+      sudo apt-get install "$package"
     else
       echo "$package ja está instalado."
 done
@@ -129,7 +129,7 @@ if ! command_exists "code"; then
   sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
   sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
   rm -f packages.microsoft.gpg
-  sudo apt install code -y
+  sudo apt install code
 else
   echo "vscode já está instalado."
 
