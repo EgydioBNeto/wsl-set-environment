@@ -41,7 +41,7 @@ alias lsa='exa --long --all --header --no-icons'
 alias ls='exa --long --header --no-icons'
 alias chat='shell-genie ask'
 alias help='tldr'
-alias micro='nano'
+alias nano='micro'
 alias find='fdfind'
 " >> "$ZSHRC_PATH"
 echo '
