@@ -53,6 +53,7 @@ ave() {
 ' >> "$ZSHRC_PATH"
 
 echo "setw -g mouse on" >> ~/.tmux.conf
+echo "set -g status-bg whit" >> ~/.tmux.conf
 
 # Install Zinit
 export PATH="/usr/local/bin:$PATH"
