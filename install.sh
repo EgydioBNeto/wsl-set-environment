@@ -83,7 +83,7 @@ zinit self-update
 echo "Zinit setup completed."
 
 # Install Programs apt-get
-prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential")
+prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential", "jq")
 
 for package in "${prerequisites[@]}"; do
   if ! command_exists "$package"; then
