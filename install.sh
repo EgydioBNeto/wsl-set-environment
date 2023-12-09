@@ -19,7 +19,7 @@ sudo apt-get update || handle_error "Failed to update packages."
 sudo apt-get upgrade || handle_error "Failed to upgrade packages."
 
 # Set zsh theme
-sed -i 's/ZSH_THEME=.*/ZSH_THEME="jonathan"/' "$ZSHRC_PATH"
+sed -i 's/ZSH_THEME=.*/ZSH_THEME="dstufft"/' "$ZSHRC_PATH"
 
 # Aliases
 echo "
