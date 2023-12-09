@@ -131,7 +131,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx", "tmux", "hr", "emojify", "coreutils")
+prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx", "tmux", "hr", "emojify", "coreutils", "xo/xo/usql")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
