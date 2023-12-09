@@ -97,6 +97,9 @@ for package in "${prerequisites[@]}"; do
   fi
 done
 
+# Create symlink for python3
+sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /usr/local/bin/python
+
 # mfa-cli install
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
 
@@ -128,7 +131,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx", "tmux", "hr", "emojify")
+prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx", "tmux", "hr", "emojify", "coreutils")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
