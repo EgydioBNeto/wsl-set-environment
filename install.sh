@@ -87,7 +87,7 @@ zinit self-update
 echo "Zinit setup completed."
 
 # Install Programs apt-get
-prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential", "jq")
+prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential" "jq")
 
 for package in "${prerequisites[@]}"; do
   if ! command_exists "$package"; then
@@ -131,7 +131,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx", "tmux", "hr", "emojify", "coreutils", "xo/xo/usql")
+prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
