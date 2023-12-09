@@ -84,7 +84,6 @@ zinit light zsh-users/zsh-completions
 " >> "$ZSHRC_PATH"
 
 zinit self-update
-
 echo "Zinit setup completed."
 
 # Install Programs apt-get
