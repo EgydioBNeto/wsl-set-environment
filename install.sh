@@ -52,6 +52,8 @@ ave() {
 # Alias end
 ' >> "$ZSHRC_PATH"
 
+echo "setw -g mouse on" >> ~/.tmux.conf
+
 # Install Zinit
 export PATH="/usr/local/bin:$PATH"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
