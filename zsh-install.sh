@@ -26,7 +26,7 @@ for package in $prerequisites; do
 done
 
 # Install Oh My Zsh
-OH_MY_ZSH_DIR="~/.oh-my-zsh"
+OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 if [ ! -d "$OH_MY_ZSH_DIR" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || handle_error "Failed to install Oh My Zsh."
 else

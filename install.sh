@@ -52,9 +52,11 @@ ave() {
 # Alias end
 ' >> "$ZSHRC_PATH"
 
+# Tmux
 echo "setw -g mouse on" >> ~/.tmux.conf
 echo "set -g status-bg whit" >> ~/.tmux.conf
 
+# SSH config
 echo "
 TCPKeepAlive=yes
 ServerAliveInterval=15
@@ -64,6 +66,8 @@ ControlMaster auto
 ControlPath /tmp/%r@%h:%p
 ControlPersist yes
 " >> ~/.ssh/config
+
+mkdir ~/ssh-keys
 
 # Install Zinit
 export PATH="/usr/local/bin:$PATH"
@@ -89,34 +93,37 @@ for package in "${prerequisites[@]}"; do
   if ! command_exists "$package"; then
     sudo apt-get install -y "$package"
   else
-    echo "$package já está instalado."
+    echo "$package is already installed."
   fi
 done
 
+# mfa-cli install
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
+
 # Install aws-cli
 if ! command_exists "aws"; then
-  echo "AWS CLI não está instalado. Instalando..."
+  echo "AWS CLI is not installed. Installing..."
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
-  echo "AWS CLI instalado com sucesso. Versão:"
+  echo "AWS CLI installed successfully. Version:"
   rm -rf awscliv2.zip
   /usr/local/bin/aws --version
   source "$ZSHRC_PATH"
 else
-  echo "AWS CLI já está instalado. Versão:"
+  echo "AWS CLI is already installed. Version:"
   aws --version
 fi
 
 # Install Homebrew
 if ! command_exists "brew"; then
-  echo "Homebrew não está instalado. Instalando..."
+  echo "Homebrew is not installed. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$ZSHRC_PATH"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   brew install gcc
 else
-  echo "Homebrew já está instalado. Versão:"
+  echo "Homebrew is already installed. Version:"
   brew --version
 fi
 
@@ -127,17 +134,29 @@ for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
     brew install "$package"
   else
-    echo "$package já está instalado."
+    echo "$package is already installed."
   fi
 done
+
+# Install Programs pip
+prerequisitesPip=("when-changed")
+
+for package in "${prerequisitesPip[@]}"; do
+  if ! command_exists "$package"; then
+    pip install https://github.com/joh/when-changed/archive/master.zip
+  else
+    echo "$package is already installed."
+  fi
+done
+
 # Install aws-vault
 if ! command_exists "aws-vault"; then
-  echo "AWS Vault não está instalado. Instalando..."
+  echo "AWS Vault is not installed. Installing..."
   brew install aws-vault
   echo "export AWS_VAULT_BACKEND=file" >> "$ZSHRC_PATH"
   echo "export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/root/.password-store/aws-vault " >> "$ZSHRC_PATH"
 else
-  echo "aws-vault já está instalado."
+  echo "aws-vault is already installed."
 fi
 
 # Install VSCode
@@ -148,7 +167,7 @@ if ! command_exists "code"; then
   rm -f packages.microsoft.gpg
   sudo apt-get install code
 else
-  echo "VSCode já está instalado."
+  echo "VSCode is already installed."
 fi
 
 # Install shell-genie
@@ -158,7 +177,7 @@ if ! command_exists "shell-genie"; then
   brew update --auto-update
   shell-genie init
 else 
-  echo "shell-genie já está instalado."
+  echo "shell-genie is already installed."
 fi
 
 echo "Programs setup completed."
