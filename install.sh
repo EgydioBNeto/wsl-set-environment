@@ -55,6 +55,16 @@ ave() {
 echo "setw -g mouse on" >> ~/.tmux.conf
 echo "set -g status-bg whit" >> ~/.tmux.conf
 
+echo "
+TCPKeepAlive=yes
+ServerAliveInterval=15
+ServerAliveCountMax=6
+Compression=yes
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+ControlPersist yes
+" >> ~/.ssh/config
+
 # Install Zinit
 export PATH="/usr/local/bin:$PATH"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
