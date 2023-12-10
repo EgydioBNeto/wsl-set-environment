@@ -47,6 +47,7 @@ alias win='explorer.exe .'
 alias dropoff='wsl.exe --shutdown'
 alias vagrant='vagrant.exe'
 alias vbm='VBoxManage.exe'
+alias notepad='notepad.exe'
 gitlog = ! git log --oneline --color | emojify | less -r
 " >> "$ZSHRC_PATH"
 echo '
