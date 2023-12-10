@@ -43,6 +43,8 @@ alias chat='shell-genie ask'
 alias help='tldr'
 alias nano='micro'
 alias find='fdfind'
+alias win='explorer.exe .'
+alias dropoff='wsl.exe --shutdown' 
 gitlog = ! git log --oneline --color | emojify | less -r
 " >> "$ZSHRC_PATH"
 echo '
@@ -160,17 +162,6 @@ if ! command_exists "aws-vault"; then
   echo "export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/root/.password-store/aws-vault " >> "$ZSHRC_PATH"
 else
   echo "aws-vault is already installed."
-fi
-
-# Install VSCode
-if ! command_exists "code"; then
-  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-  sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-  sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-  rm -f packages.microsoft.gpg
-  sudo apt-get install code
-else
-  echo "VSCode is already installed."
 fi
 
 # Install shell-genie
