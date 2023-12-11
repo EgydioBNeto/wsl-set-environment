@@ -29,7 +29,6 @@ alias ping='ping -c 5'
 alias k='kubectl'
 alias tf='terraform'
 alias av='aws-vault'
-alias gh='history|grep'
 alias avu='unset AWS_VAULT'
 alias avp='printenv | grep AWS'
 alias avls='aws-vault list'
@@ -136,7 +135,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "ansible" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli")
+prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "ansible" "gh" "asdf" "tldr" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
