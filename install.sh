@@ -146,7 +146,7 @@ for package in "${prerequisitesBrew[@]}"; do
 done
 
 # Install Programs pip
-prerequisitesPip=("when-changed" "saws")
+prerequisitesPip=("when-changed")
 
 for package in "${prerequisitesPip[@]}"; do
   if ! command_exists "$package"; then
