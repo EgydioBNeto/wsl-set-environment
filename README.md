@@ -11,11 +11,11 @@ sudo apt-get update && sudo apt-get upgrade && sudo apt install curl
 ## Installation
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/wsl-set-environment/main/zsh-install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/wsl-set-environment/main/zsh-install.sh)"
 ```
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/wsl-set-environment/main/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/wsl-set-environment/main/install.sh)"
 ```
 
 ## Configuration
