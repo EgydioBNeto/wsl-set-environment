@@ -21,38 +21,9 @@ sudo apt-get upgrade || handle_error "Failed to upgrade packages."
 # Set zsh theme
 sed -i 's/ZSH_THEME=.*/ZSH_THEME="dstufft"/' "$ZSHRC_PATH"
 
-# Tmux
-echo "setw -g mouse on" >>~/.tmux.conf
-echo "set -g status-bg white" >>~/.tmux.conf
-
-# SSH config
-echo "
-TCPKeepAlive=yes
-ServerAliveInterval=15
-ServerAliveCountMax=6
-Compression=yes
-ControlMaster auto
-ControlPath /tmp/%r@%h:%p
-ControlPersist yes
-" >>~/.ssh/config
-
-mkdir ~/ssh-keys
-
 # Install Zinit
 export PATH="/usr/local/bin:$PATH"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
-
-# Configure zinit
-echo "
-# Zinit start
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-# Zinit end
-" >>"$ZSHRC_PATH"
-
-zinit self-update
-echo "Zinit setup completed."
 
 # Install Programs apt-get
 prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential" "jq")
@@ -132,7 +103,6 @@ fi
 
 # Aliases
 echo "
-# Alias start
 alias c='clear'
 alias ping='ping -c 5'
 alias k='kubectl'
@@ -159,6 +129,33 @@ alias notepad='notepad.exe'
 alias gitlog='git log --oneline --color | emojify | less -r'
 " >>"$ZSHRC_PATH"
 echo 'ave() { local profile="$1"; aws-vault exec "$profile" --no-session; }' >>"$ZSHRC_PATH"
+
+# Configure zinit
+echo "
+# Zinit start
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit self-update
+# Zinit end
+" >>"$ZSHRC_PATH"
+echo "Zinit setup completed."
+
+# Tmux
+echo "setw -g mouse on" >>~/.tmux.conf
+echo "set -g status-bg white" >>~/.tmux.conf
+
+# SSH config
+echo "
+TCPKeepAlive=yes
+ServerAliveInterval=15
+ServerAliveCountMax=6
+Compression=yes
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+ControlPersist yes
+" >>~/.ssh/config
+mkdir ~/ssh-keys
 
 # Install shell-genie
 if ! command_exists "shell-genie"; then
