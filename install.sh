@@ -59,7 +59,7 @@ ave() {
 
 # Tmux
 echo "setw -g mouse on" >> ~/.tmux.conf
-echo "set -g status-bg whit" >> ~/.tmux.conf
+echo "set -g status-bg white" >> ~/.tmux.conf
 
 # SSH config
 echo "
