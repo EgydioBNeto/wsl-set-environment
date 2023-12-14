@@ -51,7 +51,6 @@ if ! command_exists "aws"; then
   echo "AWS CLI installed successfully. Version:"
   rm -rf awscliv2.zip
   /usr/local/bin/aws --version
-  source "$ZSHRC_PATH"
 else
   echo "AWS CLI is already installed. Version:"
   aws --version
@@ -61,7 +60,7 @@ fi
 if ! command_exists "brew"; then
   echo "Homebrew is not installed. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>"$ZSHRC_PATH"
+  echo "eval '$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'" >>"$ZSHRC_PATH"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   brew install gcc
 else
