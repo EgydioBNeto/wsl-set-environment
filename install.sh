@@ -161,6 +161,7 @@ if ! command_exists "shell-genie"; then
   pipx install shell-genie
   echo "export PATH=\$PATH:~/.local/bin" >>"$ZSHRC_PATH"
   brew update --auto-update
+  source ~/.zshrc
   shell-genie init
 else
   echo "shell-genie is already installed."
