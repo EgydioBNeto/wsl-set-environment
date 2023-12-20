@@ -100,6 +100,9 @@ else
   echo "aws-vault is already installed."
 fi
 
+# Install scout-cli
+curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
+
 # Aliases
 echo "
 alias c='clear'
