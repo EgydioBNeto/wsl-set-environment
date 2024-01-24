@@ -69,7 +69,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("docker" "docker-compose" "kubernetes-cli" "kubectx" "terraform" "ansible" "oci-cli" "gh" "pulumi" "curlie" "asdf" "tldr" "git-flow" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli")
+prerequisitesBrew=("kubernetes-cli" "kubectx" "terraform" "ansible" "oci-cli" "gh" "pulumi" "curlie" "asdf" "tldr" "git-flow" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
