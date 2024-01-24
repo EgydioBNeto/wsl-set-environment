@@ -129,6 +129,7 @@ alias vagrant='vagrant.exe'
 alias vbm='VBoxManage.exe'
 alias notepad='notepad.exe'
 alias gitlog='git log --oneline --color | emojify | less -r'
+eval '$(ssh-agent -s)'
 " >>"$ZSHRC_PATH"
 echo 'ave() { local profile="$1"; aws-vault exec "$profile" --no-session; }' >>"$ZSHRC_PATH"
 
