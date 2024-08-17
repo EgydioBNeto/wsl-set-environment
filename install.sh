@@ -26,7 +26,7 @@ export PATH="/usr/local/bin:$PATH"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
 
 # Install Programs apt-get
-prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential" "jq" "exa" "traceroute")
+prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential" "jq" "exa" "traceroute" "golang-go" "makepkg" "g++" "libstdc++-11-dev" "libstdc++-12-dev")
 
 for package in "${prerequisites[@]}"; do
   if ! command_exists "$package"; then
@@ -124,6 +124,9 @@ if ! command_exists "aws-vault"; then
 else
   echo "aws-vault is already installed."
 fi
+
+# install usql
+go install github.com/xo/usql@latest
 
 # Install scout-cli
 curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
