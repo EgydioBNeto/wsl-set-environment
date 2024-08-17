@@ -50,6 +50,12 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 sudo apt-get update
 
+# Install Docker
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
 # Create symlink for python3
 sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /usr/local/bin/python
 
