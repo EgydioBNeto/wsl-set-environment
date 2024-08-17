@@ -125,9 +125,6 @@ else
   echo "aws-vault is already installed."
 fi
 
-# install usql
-go install github.com/xo/usql@latest
-
 # Install scout-cli
 curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
 
