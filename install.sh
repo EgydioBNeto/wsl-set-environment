@@ -26,7 +26,7 @@ export PATH="/usr/local/bin:$PATH"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)" || handle_error "Failed to install Zinit."
 
 # Install Programs apt-get
-prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential" "jq")
+prerequisites=("gcc-11" "wget" "ca-certificates" "gpg" "apt-transport-https" "fd-find" "python3-pip" "unzip" "build-essential" "jq" "exa" "traceroute")
 
 for package in "${prerequisites[@]}"; do
   if ! command_exists "$package"; then
@@ -38,6 +38,9 @@ done
 
 # Create symlink for python3
 sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /usr/local/bin/python
+
+# Install ccg
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/conventional-commits-generator/main/install.py)"
 
 # mfa-cli install
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
@@ -69,7 +72,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("kubernetes-cli" "kubectx" "terraform" "ansible" "oci-cli" "gh" "pulumi" "curlie" "asdf" "tldr" "git-flow" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "exa" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli")
+prerequisitesBrew=("kubernetes-cli" "kubectx" "terraform" "ansible" "oci-cli" "gh" "pulumi" "curlie" "asdf" "tldr" "git-flow" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli" "docker")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
