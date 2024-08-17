@@ -39,6 +39,9 @@ done
 # Create symlink for python3
 sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /usr/local/bin/python
 
+# Install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # Install ccg
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/conventional-commits-generator/main/install.py)"
 
@@ -72,7 +75,7 @@ else
 fi
 
 # Install Programs brew
-prerequisitesBrew=("kubernetes-cli" "kubectx" "terraform" "ansible" "oci-cli" "gh" "pulumi" "curlie" "asdf" "tldr" "git-flow" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "dog" "openvpn" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli" "docker")
+prerequisitesBrew=("kubernetes-cli" "kubectx" "terraform" "ansible" "oci-cli" "gh" "pulumi" "curlie" "asdf" "tldr" "git-flow" "micro" "pre-commit" "terraform-docs" "k9s" "bat" "openvpn" "pipx" "tmux" "hr" "emojify" "coreutils" "xo/xo/usql" "helm" "vault-cli" "docker")
 
 for package in "${prerequisitesBrew[@]}"; do
   if ! command_exists "$package"; then
@@ -118,7 +121,6 @@ alias avp='printenv | grep AWS'
 alias avls='aws-vault list'
 alias avl='aws-vault login --region us-east-1'
 alias cat='bat'
-alias dig='dog'
 alias ports='netstat -tulpn'
 alias lsa='exa --long --all --header --no-icons'
 alias ls='exa --long --header --no-icons'
