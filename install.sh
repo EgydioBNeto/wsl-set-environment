@@ -67,6 +67,9 @@ python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/conventio
 # mfa-cli install
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
 
+# Install doggo
+curl -sS https://raw.githubusercontent.com/mr-karan/doggo/main/install.sh | sh
+
 # Install aws-cli
 if ! command_exists "aws"; then
   echo "AWS CLI is not installed. Installing..."
@@ -140,6 +143,7 @@ alias avp='printenv | grep AWS'
 alias avls='aws-vault list'
 alias avl='aws-vault login --region us-east-1'
 alias cat='bat'
+alias dig='doggo A AAAA MX --time'
 alias ports='netstat -tulpn'
 alias lsa='exa --long --all --header --no-icons'
 alias ls='exa --long --header --no-icons'
